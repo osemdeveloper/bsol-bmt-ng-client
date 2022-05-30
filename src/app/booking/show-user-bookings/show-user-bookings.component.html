@@ -1,0 +1,328 @@
+<div class="bookingImage">
+  <div class="p-3 mb-2 bg-dark text-white">
+    <div align="center" class="m-3">
+      <h1>Booking Details</h1>
+    </div>
+  </div>
+
+  <!-- <div class="tost">
+    <h1>Angular 8 Toastr Notifications Example - ItSolutionStuff.com</h1>
+  
+
+  
+<button (click)="showToasterError()">
+    Error Toaster
+</button>
+  
+<button (click)="showToasterInfo()">
+    Info Toaster
+</button>
+  
+<button (click)="showToasterWarning()">
+    Warning Toaster
+</button>
+
+  </div> -->
+
+  <div class="row mb-6" align="center">
+    <div class="col-6">
+      <button class="btn btn-dark" routerLink="/userHome">Home</button>
+    </div>
+    <div class="col-6">
+      <button class="btn btn-danger" (click)="logout()">logout</button>
+    </div>
+  </div>
+  <br /><br />
+  <div *ngIf="notFound" align="center">
+    <div class="noBook">
+      <div class="card">
+        <h5 class="card-header">NO BOOKINGS</h5>
+        <div class="card-body">
+          <h5 class="card-title">You do not have any bookings yet</h5>
+          <p class="card-text">Go to our booking section to create a trip .</p>
+          <a href="#" class="btn btn-primary" routerLink="/userHome"
+            >Know More</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="leftAlign">
+    <div *ngIf="found" >
+      <div class="table-responsive-sm">
+        <table
+          class="table table-bordered table-hover"
+          style="background-color: silver"
+        >
+          <thead class="thead-dark">
+            <tr >
+              <th>booking Id</th>
+
+              <th>Amount</th>
+              <th>booking Date and Time</th>
+              <!-- <th>Booking Time</th> -->
+
+              <th>action</th>
+            </tr>
+          </thead>
+          <tbody
+            *ngFor="let booking of bookings"
+            class="table-success table-responsive-sm table-hover"
+          >
+            <tr *ngFor="let format of formatsDateTest">
+              <td scope="row" 
+              
+              >{{ booking.bookingId }}</td>
+
+              <td>{{ booking.totalCost | currency:'INR' }}</td>
+              <td>{{ booking.bookingDate_andTime | date:format }}</td>
+              <!-- <td>{{ booking.bookingTime }}</td> -->
+
+              <td>
+                <!-- <button
+                class="btn btn-light"
+                (click)="getPassengers(booking.bookingId)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-person-check"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+                  />
+                </svg>
+                passengers
+              </button> -->
+
+                &nbsp;
+                <button
+                  class="btn btn-light"
+                  (click)="getBusDetails(booking.busNumber)"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-bag-check"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+                    />
+                    <path
+                      d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"
+                    />
+                  </svg>
+                  Bus details
+                </button>
+                &nbsp;
+
+                <!-- <button 
+                type="button"
+          
+                class="btn btn-light "
+                placement="top"
+                ngbPopover="You must complete the payment to Confirm your ticket"
+                popoverTitle="Proceed to payment"
+              >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+              </svg>
+              </button> -->
+
+                <!-- &nbsp; -->
+
+                <button
+                  class="btn btn-light"
+                  (click)="payment(booking.totalCost)"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-wallet2"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"
+                    />
+                  </svg>
+                  Payment
+                </button>
+                &nbsp;
+
+                <button
+                  class="btn btn-light"
+                  (click)="
+                    download(
+                      booking.ownerId,
+                      booking.busNumber,
+                      booking.bookingId
+                    )
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-filetype-pdf"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.6 11.85H0v3.999h.791v-1.342h.803c.287 0 .531-.057.732-.173.203-.117.358-.275.463-.474a1.42 1.42 0 0 0 .161-.677c0-.25-.053-.476-.158-.677a1.176 1.176 0 0 0-.46-.477c-.2-.12-.443-.179-.732-.179Zm.545 1.333a.795.795 0 0 1-.085.38.574.574 0 0 1-.238.241.794.794 0 0 1-.375.082H.788V12.48h.66c.218 0 .389.06.512.181.123.122.185.296.185.522Zm1.217-1.333v3.999h1.46c.401 0 .734-.08.998-.237a1.45 1.45 0 0 0 .595-.689c.13-.3.196-.662.196-1.084 0-.42-.065-.778-.196-1.075a1.426 1.426 0 0 0-.589-.68c-.264-.156-.599-.234-1.005-.234H3.362Zm.791.645h.563c.248 0 .45.05.609.152a.89.89 0 0 1 .354.454c.079.201.118.452.118.753a2.3 2.3 0 0 1-.068.592 1.14 1.14 0 0 1-.196.422.8.8 0 0 1-.334.252 1.298 1.298 0 0 1-.483.082h-.563v-2.707Zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638H7.896Z"
+                    />
+                  </svg>
+                  Ticket
+                </button>
+                &nbsp; &nbsp;
+
+                <!-- <button
+                  class="btn btn-danger"
+                  (click)="delete(booking.bookingId)"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-trash3-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"
+                    />
+                  </svg>
+                </button> -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br /><br />
+
+  <div class="jumbotron" align="center" *ngIf="buses">
+    <div class="busdetail">
+      <table
+        style="
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        "
+      >
+        <tr style="background-color: #dddddd">
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px">
+            Bus Number
+          </th>
+          <th>Boarding Point</th>
+          <th>Dropping Point</th>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #dddddd; text-align: left; padding: 8px">
+            {{ buses.registrationNumber }}
+          </td>
+          <td>{{ buses.sourceDepot }}</td>
+          <td>{{ buses.destinationDepot }}</td>
+        </tr>
+      </table>
+      <!-- xxzXCDVCVFBGBGHNHMHMHGMHM -->
+      <table
+        style="
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        "
+      >
+        <tr style="background-color: #dddddd">
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px">
+            Departure Date and Time
+          </th>
+
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px">
+            Arrival Date  and Time
+          </th>
+          <!-- <th>Departure Time</th> -->
+        </tr>
+        <tr *ngFor="let format of formatsDateTest">
+          <td style="border: 1px solid #dddddd; text-align: left; padding: 8px">
+            {{ buses.departureDate_andTime  | date: format  }}
+        
+          </td>
+          <td style="border: 1px solid #dddddd; text-align: left; padding: 8px">
+            {{ buses.arrivalDate_andTime | date: format }}
+         
+          </td>
+          <!-- <td>{{ buses.departureTime }}</td> -->
+        </tr>
+      </table>
+
+      <table
+        style="
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        "
+      >
+        <!-- <tr style="background-color: #dddddd">
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px">
+            Arrival Date  and Time
+          </th>
+           <th>Arrival Time</th> 
+        </tr>
+        <tr>
+          <td style="border: 1px solid #dddddd; text-align: left; padding: 8px">
+            {{ buses.arrivalDate_andTime }}
+            {{ buses.arrivalTime }}
+          </td>
+           <td>{{ buses.arrivalTime }}</td> 
+        </tr> -->
+      </table>
+    </div>
+
+    <div *ngIf="passengers">
+      <h4>passenger details</h4>
+
+      <table class="table table-warning">
+        <thead class="thead-dark">
+          <tr>
+            <th>passenger ID</th>
+            <th>passenger name</th>
+            <th>passenger age</th>
+            <th>passenger luggage</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let passenger of passengers" class="table-striped">
+          <tr>
+            <td scope="row">{{ passenger.passengerId }}</td>
+            <td>{{ passenger.name }}</td>
+            <td>{{ passenger.age }}</td>
+            <td>{{ passenger.luggage }}</td>
+            <td>
+              <button
+                class="btn btn-dark"
+                (click)="updatePassenger(passenger.passengerId)"
+              >
+                Update
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

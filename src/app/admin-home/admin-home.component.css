@@ -1,0 +1,17 @@
+.adminHome {
+  height: 700px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(https://images.pexels.com/photos/1616516/pexels-photo-1616516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+}
+
+.row {
+  height: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(https://images.pexels.com/photos/950241/pexels-photo-950241.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+}
+
+.card {
+  background-image: url();
+}

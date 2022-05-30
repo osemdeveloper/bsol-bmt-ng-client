@@ -1,0 +1,44 @@
+.bookingImage{
+    /* height: 825px; */
+
+    height: fit-content;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+}
+
+.popover-title {
+    background-color: black; 
+    color: #FFFFFF; 
+    font-size: 28px;
+    text-align:center;
+  }
+
+.busdetail{
+    background-color: orange;
+}
+
+/* .noBook{
+    width: fit-content;
+    height: fit-content;
+    background-color: black;
+    font-weight: 600;
+} */
+
+.leftAlign{
+    margin-left: 8%;
+    margin-right: 15%;
+ 
+}
+
+
+@media screen and (max-width: 1025px) {
+    /* Here are some changes*/
+    
+  }
+
+ /* Mobile device styles */
+  @media screen and (max-width: 480px) {
+        /* Here are some changes*/
+  }

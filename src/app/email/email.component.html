@@ -1,0 +1,45 @@
+<div class="screen">
+
+  <div class="mail">
+  
+
+    <h1>Enter the following details</h1>
+    <br>
+    <table>
+      <tr>
+        <td><span style="font-weight: 700;  margin-left: 55%;">Name</span></td>
+        <td><input style="border-radius: 5px; margin-left: 35%;" type="text" [(ngModel)]="dataset.name" name="name" /></td>
+      </tr>
+      <br>
+      <tr>
+        <td><span style="font-weight: 700; margin-left: 55%;">Age</span></td>
+        <td><input style="border-radius: 5px; margin-left: 35%;" type="number" [(ngModel)]="dataset.age" name="age" /></td>
+      </tr>
+      <br>
+      <tr>
+        <td><span style="font-weight: 700; margin-left: 55%;">Country</span></td>
+        <td><input style="border-radius: 5px; margin-left: 35%;" type="text" [(ngModel)]="dataset.country" name="country" /></td>
+      </tr>
+      <br>
+      <tr>
+        <td><span style="font-weight: 700; margin-left: 55%;">Email</span></td>
+        <td><input style="border-radius: 5px; margin-left: 35%;" type="text" [(ngModel)]="dataset.email" name="email" /></td>
+      </tr>
+      <br>
+    
+     
+    </table>
+    <tr>
+      <td></td>
+      <td> <button
+    
+        type="button"
+        class="btn btn-lg btn-success w-100 mx-0 mb-2" 
+        (click)="onSubmit()"
+      >
+        Proceed
+      </button></td>
+    </tr>
+    
+    </div>
+</div>

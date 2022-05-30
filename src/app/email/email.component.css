@@ -1,0 +1,28 @@
+.mail{
+    margin-left: 35%;
+
+    height:300px;
+    width: 500px;
+    /* background-color: bisque; */
+    border-radius: 3%;
+    background-image: url("https://images.pexels.com/photos/248537/pexels-photo-248537.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  
+}
+
+.btn{
+    width: fit-content;
+    background-color: black;
+    margin-left: 95%;
+
+}
+
+.screen{
+
+    height: 900px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-image: url(https://images.pexels.com/photos/380330/pexels-photo-380330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+
+
+}

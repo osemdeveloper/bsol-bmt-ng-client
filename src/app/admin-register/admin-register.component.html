@@ -1,0 +1,147 @@
+<div class="container">
+  <div class="p-3 bg-danger text-white">
+    <h1 align="center">Create Admin</h1>
+  </div>
+  <br />
+
+  <div class="jumbotron" style="padding-bottom: 5%">
+    <form
+      class="form-group"
+      [formGroup]="adminRegisterForm"
+      (ngSubmit)="onAsk()"
+    >
+      <div *ngIf="failure.value" class="alert-danger">
+        This email is already registered! <br />
+        Try with new email id or
+        <button class="button btn btn-warning" routerLink="/adminLogin">
+          Login
+        </button>
+      </div>
+
+      <!------------ adminName------- -->
+
+      <div class="row">
+        <div class="col-6">
+          <div
+            *ngIf="
+              adminRegisterForm.get('adminName').invalid &&
+              adminRegisterForm.get('adminName').touched
+            "
+          >
+            <small class="text-danger">*Field mandatory</small>
+          </div>
+          <label> adminName: </label>
+        </div>
+
+        <br />
+        <br />
+        <br />
+
+        <div class="col-6">
+          <input
+            class="adminRegisterForm.get('adminName').invalid && adminRegisterForm.get('adminName').touched"
+            type="text"
+            class="form-control"
+            formControlName="adminName"
+          />
+        </div>
+
+        <!------------ adminEmail------- -->
+
+        <div class="row">
+          <div class="col-6">
+            <div
+              *ngIf="
+                adminRegisterForm.get('adminEmail').invalid &&
+                adminRegisterForm.get('adminEmail').touched
+              "
+            >
+              <small class="text-danger">*Field mandatory</small>
+            </div>
+            <label> adminEmail: </label>
+          </div>
+          <br />
+          <br />
+          <div class="col-6">
+            <input
+              class="adminRegisterForm.get('adminEmail').invalid && adminRegisterForm.get('adminEmail').touched"
+              type="text"
+              class="form-control"
+              formControlName="adminEmail"
+            />
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <!-- password -->
+        <div class="row">
+          <div class="col-6">
+            <div
+              *ngIf="
+                adminRegisterForm.get('password').invalid &&
+                adminRegisterForm.get('password').touched
+              "
+            >
+              <div
+                *ngIf="adminRegisterForm.get('password').errors?.['required']"
+              >
+                <small class="text-danger">*Field mandatory</small>
+              </div>
+              <div
+                *ngIf="adminRegisterForm.get('password').errors?.['minlength']"
+              >
+                <small class="text-danger"
+                  >*password must be minimum 8 characters</small
+                >
+              </div>
+            </div>
+            <label>password:</label>
+          </div>
+          <div class="col-6">
+            <input
+              class="adminRegisterForm.get('password').invalid && adminRegisterForm.get('password').touched"
+              type="password"
+              class="form-control"
+              formControlName="password"
+            />
+          </div>
+        </div>
+        <br />
+
+        <br />
+        <br />
+
+        <!----------------- confirm password------------ -->
+        <div class="row">
+          <div class="col-6">
+            <div *ngIf="adminRegisterForm.errors?.['mismatch']">
+              <small class="text-danger">*mismatch</small>
+            </div>
+            <label>Confirm password:</label>
+          </div>
+          <div class="col-6">
+            <input
+              class="adminRegisterForm.errors?.['mismatch']"
+              type="password"
+              class="form-control"
+              formControlName="confirmPassword"
+            />
+          </div>
+        </div>
+        <br />
+        <br />
+
+        <div align="center">
+          <input
+            [disabled]="!adminRegisterForm.valid"
+            type="submit"
+            class="btn btn-danger"
+            value="create"
+          />
+        </div>
+        <br />
+      </div>
+    </form>
+  </div>
+</div>

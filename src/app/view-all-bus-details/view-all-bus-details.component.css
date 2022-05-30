@@ -1,0 +1,26 @@
+.container{
+    
+        width: fit-content;
+        background-image: url(https://images.pexels.com/photos/950241/pexels-photo-950241.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+      
+}
+
+.disabled {
+        pointer-events: none;
+       }
+
+
+       table {
+        background-color: olivedrab;
+      }
+
+
+      /* tbody tr:nth-child(odd) {
+        background-color: wheat;
+      }
+      
+      tbody tr:nth-child(even) {
+        background-color: wheat;
+      } */
+
+       

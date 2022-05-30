@@ -1,0 +1,84 @@
+.container2 {
+  height: 625px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-image: url(https://images.hdqwalls.com/wallpapers/yokohama-bus-1f.jpg);
+  /* background-image: url(https://wallpaperaccess.com/full/407997.jpg); */
+  margin: 0;
+  padding: 0;
+  height: 600px;
+}
+
+.extraJumbo {
+  width: 100%;
+  background-image: url(https://images.pexels.com/photos/950241/pexels-photo-950241.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  margin: 0;
+  padding: 0;
+}
+
+.fromTo {
+  border-radius: 5px;
+  margin-top: 5%;
+  background-image: url();
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(1px);
+  /* background-color: black; */
+  width: 300px;
+  height: 400px;
+}
+
+.searchBox {
+  margin-left: 28%;
+}
+
+.chatBot {
+  height: fit-content;
+  background-color: blueviolet;
+}
+
+mat-sidenav-container,
+mat-sidenav-content,
+mat-sidenav {
+  height: 100%;
+}
+
+mat-sidenav {
+  width: 250px;
+}
+
+a {
+  text-decoration: wavy;
+  color: white;
+}
+
+a:hover,
+a:active {
+  color: lightgray;
+}
+
+.navigation-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.icon {
+  display: inline-block;
+  height: 30px;
+  margin: 0 auto;
+  padding-right: 5px;
+  text-align: center;
+  vertical-align: middle;
+  width: 15%;
+}
+
+.label {
+  display: inline-block;
+  line-height: 30px;
+  margin: 0;
+  width: 85%;
+}
+
+

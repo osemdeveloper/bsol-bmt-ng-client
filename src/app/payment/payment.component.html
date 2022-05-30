@@ -1,0 +1,414 @@
+<div class="payments">
+  <div>
+    <h2 style="color: #fff; background-color: black">
+      Make a payment to confirm your booking
+    </h2>
+    <br />
+
+    <!-- <div class="one">
+      
+
+      <button
+        class="w-50 h-20 btn btn-primary btn-lg"
+        style="border-radius: 5px;"
+        type="submit"
+        (click)="initializePayment(50)"
+      >
+        Continue to checkout
+      </button>
+    </div>
+  </div>
+
+  <br />
+<div class="two">
+  <button
+    class="w-50 h-20 btn btn-danger"
+    style="text-align: center"
+    routerLink="/getBookingByUser/:userId"
+  >
+    Go back
+  </button>
+</div>
+</div> -->
+
+    <!-- <div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <!-- <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+    <!-- <h2>Checkout form</h2>
+      <p class="lead">
+        Below is an example form built entirely with Bootstrap’s form controls.
+        Each required form group has a validation state that can be triggered by
+        attempting to submit the form without completing it.
+      </p>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">Your cart</span>
+          <span class="badge bg-primary rounded-pill">3</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Product name</h6>
+              <small class="text-muted">Brief description</small>
+            </div>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div></div>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <small class="text-muted">Brief description</small>
+            </div>
+          </li>
+          <li class="list-group-item d-flex justify-content-between bg-light">
+            <div class="text-success"></div>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (INR)</span>
+
+            <strong *ngFor="let booking of bookings">{{
+              booking.totalCost
+            }}</strong>
+          </li>
+        </ul>
+
+        <form class="card p-2">
+          <div class="input-group"></div>
+        </form>
+      </div>
+      <div class="col-md-7 col-lg-8">
+        <form class="needs-validation" novalidate>
+          <hr class="my-4" />
+
+          <button class="w-100 btn btn-primary btn-lg" type="submit">
+            Continue to checkout
+          </button>
+          <br />
+          <br />
+          <button
+            class="w-100 btn btn-danger btn-lg"
+            type="submit"
+            (click)="cancelBook()"
+          >
+            cancel
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+</div> -->
+
+    <!-- <div
+      class="modal modal-sheet position-static d-block py-5"
+      tabindex="-1"
+      role="dialog"
+      id="modalSheet"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-6 shadow">
+          <div class="modal-header border-bottom-0">
+            <h5 class="modal-title">Confirm Booking</h5>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
+          </div>
+          <div class="modal-body py-0">
+            <p>
+              Hello, this is a reminder that your payment of
+              Travel is due. Our online payment portal is super
+              easy to use! Click this link to pay
+            </p>
+          </div>
+          <div 
+          class="modal-footer flex-column border-top-0">
+            <button
+              type="button"
+              class="btn btn-lg btn-success w-100 mx-0 mb-2"
+              (click)="initializePayment()"
+              
+            >
+             bookings.totalCost 
+              Proceed
+            </button>
+
+           
+            <button
+              type="button"
+              class="btn btn-lg btn-secondary w-100 mx-0"
+              data-bs-dismiss="modal"
+              routerLink="/getBookingByUser/:userId"
+            >
+              Go Back
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="payGlass">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-7 mx-auto">
+          <div class="bg-white rounded-lg shadow-sm p-5">
+            <!-- Credit card form tabs -->
+
+            <ul
+              role="tablist"
+              class="nav bg-light nav-pills rounded-pill nav-fill mb-3"
+            >
+              <li class="nav-item">
+                <a
+                  data-toggle="pill"
+                  href="#nav-tab-card"
+                  class="nav-link active rounded-pill"
+                >
+                  <i class="fa fa-credit-card"></i>
+                  Debit Card
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  data-toggle="pill"
+                  href="#nav-tab-paypal"
+                  class="nav-link rounded-pill"
+                >
+                  <span class="material-icons">qr_code</span>
+                  UPI
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  data-toggle="pill"
+                  href="#nav-tab-bank"
+                  class="nav-link rounded-pill"
+                >
+                  <i class="fa fa-university"></i>
+                  Bank Transfer
+                </a>
+              </li>
+            </ul>
+            <!-- End -->
+
+            <!-- Credit card form content -->
+            <div class="tab-content">
+              <!-- credit card info-->
+              <div id="nav-tab-card" class="tab-pane fade show active">
+                <!-- <p class="alert alert-success">Some text success or error</p> -->
+                <form role="form">
+                  <div class="form-group" [formGroup]="updateForm">
+                    <!-- ############################################################################ -->
+                    <div class="row">
+                      <div class="col-3">
+                        <div
+                          *ngIf="
+                            updateForm.get('email').invalid &&
+                            updateForm.get('email').touched
+                          "
+                        >
+                          <small class="text-danger">*Field mandatory</small>
+                        </div>
+                        <!-- <label style="margin-left: 80%"> email: </label> -->
+                      </div>
+                      <div class="input-group">
+                        <input
+                          class="updateForm.get('email').invalid && updateForm.get('email').touched"
+                          type="text"
+                          class="form-control"
+                          formControlName="email"
+                        />
+                      </div>
+                    </div>
+
+                    <!-- ############################################################################## -->
+                    <label style="margin-left: -470px;" class="justify-self:flex-end" for="username"><b>Full name</b> </label>
+                    <input
+                      type="text"
+                      name="username"
+                      placeholder="Name on the card"
+                      required
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label style="margin-left: -450px;" for="cardNumber"><b>Card number</b></label>
+                    <div class="input-group">
+                      <input 
+                        [ngModel]="cardNumber"
+                        (ngModelChange)="cardNumberchange($event)"
+                        [ngModelOptions]="{standalone: true}"
+                        type="text"
+                        id="input"
+                        name="cardNumber"
+                        placeholder="Your card number"
+                        class="form-control"
+                        required
+                      />
+                      <div class="input-group-append">
+                        <!-- <span class="input-group-text text-muted">
+                                                <i class="fa fa-cc-visa mx-1"></i>
+                                                <i class="fa fa-cc-amex mx-1"></i>
+                                                <i class="fa fa-cc-mastercard mx-1"></i>
+                                            </span> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <div class="form-group">
+                        <label style="margin-left: -280px;"><span class="hidden-xs"><b>Expiration</b></span></label>
+                        <div class="input-group">
+                          <input
+                            type="number"
+                            placeholder="MM"
+                            name=""
+                            class="form-control"
+                            required
+                          />
+                          <input
+                            type="number"
+                            placeholder="YY"
+                            name=""
+                            class="form-control"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group mb-4">
+                        <label
+                          title="Three-digits code on the back of your card"
+                          ><b>CVV</b>
+                          <i class="fa fa-question-circle"></i>
+                        </label>
+                        <input type="text" required class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <mat-toolbar color="primary"> -->
+
+                  <!-- </mat-toolbar> -->
+                  <!-- <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner> -->
+                  <button
+                    style="margin-left: 80%"
+                    type="button"
+                    class="subscribe btn btn-lg btn-warning w-100 mx-0 mb-2 btn-block rounded-pill shadow-sm btn"
+                    mat-raised-button
+                    color=""
+                    [class.spinner]="loading"
+                    [disabled]="loading"
+                    (click)="card()"
+                  >
+                    ₹{{ this.paymentAmount }}
+                  </button>
+                </form>
+                
+              </div>
+              <!-- End -->
+
+              <!-- Paypal info -->
+              <div id="nav-tab-paypal" class="tab-pane fade">
+                <ngx-qrcode
+                  [elementType]="elementType"
+                  [errorCorrectionLevel]="correctionLevel"
+                  [value]="value"
+                  cssClass="bshadow"
+                ></ngx-qrcode>
+
+                <!-- <textarea [(ngModel)] = "value"></textarea> -->
+                <p>
+                  <!-- <button type="button" class="btn btn-dark rounded-pill"><i class="fa fa-paypal mr-2"></i> <a href="https://paytm.com/">Log into my Paypal</a></button> -->
+                </p>
+                <img src="assets/images/QRimg.jpg" alt="" />
+                <br />
+                <b class="text-muted">
+                  Customers can pay by scanning the QR code through 'Scan & Pay'
+                  and generate the bill instantly for making payments
+                </b>
+              </div>
+              <!-- End -->
+
+              <!-- bank transfer info -->
+              <div id="nav-tab-bank" class="tab-pane fade">
+                <h6>Bank account details</h6>
+                <dl>
+                  <dt>Bank</dt>
+                  <dd>THE WORLD BANK</dd>
+                </dl>
+                <dl>
+                  <dt>Account number</dt>
+                  <dd>7775877975</dd>
+                </dl>
+                <dl>
+                  <dt>IBAN</dt>
+                  <dd>CZ7775877975656</dd>
+                </dl>
+               
+                <p class="text-muted">
+                  You can use these bank details above to make a succesful
+                  payment to us . But you should upload a screenshot or bill
+                  copy .
+                </p>
+
+                <!-- ############################################################################################### -->
+                <div class="container row">
+                  <div class="col-md-12">
+                    <h4>Verify your payment by uploading a screenshot</h4>
+                  </div>
+                </div>
+
+                <div class="container row">
+                  <div style="color: green" class="col-md-6">
+                    <input type="file" (change)="onFileChanged($event)" />
+                  </div>
+                  <div class="col-md-6">
+                    <input
+                      class="subscribe btn btn-success w-50 mx-2 mb-2 btn-block rounded-pill shadow-sm btn"
+                      (click)="onUpload()"
+                      value="upload"
+                    />
+                    
+                  </div>
+                </div>
+                <hr />
+                <small style="color: rgb(233, 15, 15)">Note:This method has a delay time , Kindly select other options if avaliable.</small>
+                <div class="container row">
+                  <div class="col-md-12">
+                    <div *ngIf="message">{{ message }}</div>
+                  </div>
+                </div>
+
+                <!-- <div class="container row">
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName"
+                name="name" />
+        </div>
+        <div class="col-md-6">
+            <input type="button" (click)="getImage()" value="Get Image">
+    
+        </div>
+    </div> -->
+
+                <div class="container row">
+                  <div class="col-md-12">
+                    <div *ngIf="retrievedImage">
+                      <img [src]="retrievedImage" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ################################################################################################### -->
+              </div>
+              <!-- End -->
+            </div>
+            <!-- End -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

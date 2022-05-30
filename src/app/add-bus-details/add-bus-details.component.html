@@ -1,0 +1,234 @@
+<div class="container">
+  <div class="p-3 mb-2 bg-danger text-white text-center">
+    <h1>Add Bus Details</h1>
+  </div>
+  <br />
+  <div class="addBus jumbotron">
+    <form (ngSubmit)="onSubmit()" [formGroup]="busForm">
+      <div align="center">
+        <button class="btn btn-dark" routerLink="/adminHome">Goto Home</button>
+      </div>
+      <br /><br />
+
+      <div class="form-group">
+        <label>Vehicle Number</label>
+        <input 
+         (blur)="vehicleNoBlur($event)"
+          type="text"
+          style="font-weight: 600; text-transform: uppercase"
+          placeholder="Vehicle Number"
+          [ngModel]="registrationNumber"
+          (ngModelChange)="vehicleNochange($event)"
+          class="form-control"
+          [ngModelOptions]="{standalone: true}"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+            busForm.get('registrationNumber').invalid &&
+            busForm.get('registrationNumber').touched
+          "
+          >Please fill RTO Number</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Departure Depot</label>
+        <input
+          type="text"
+          placeholder="Boarding Point"
+          formControlName="sourceDepot"
+          class="busForm.get('sourceDepot').invalid && busForm.get('sourceDepot').touched"
+          class="form-control"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+            busForm.get('sourceDepot').invalid &&
+            busForm.get('sourceDepot').touched
+          "
+          >Please fill the arrival Depot</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Arrival Depot</label>
+        <input
+          type="text"
+          placeholder="Arrival Point"
+          formControlName="destinationDepot"
+          class="busForm.get('destinationDepot').invalid && busForm.get('destinationDepot').touched"
+          class="form-control"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+            busForm.get('destinationDepot').invalid &&
+            busForm.get('destinationDepot').touched
+          "
+          >Please fill the departure Depot</small
+        >
+      </div>
+
+      <!-- <div class="form-group">
+        <label>Available seats</label>
+        <input
+          type="number"
+          placeholder="Available seats"
+          formControlName="avaliableSeats"
+          class="busForm.get('avaliableSeats').invalid && busForm.get('avaliableSeats').touched"
+          class="form-control"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+            busForm.get('avaliableSeats').invalid &&
+            busForm.get('avaliableSeats').touched
+          "
+          >Seats Should be atleast one or less than hundered
+        </small>
+      </div> -->
+
+      <!-- Expereiment with DEPARTURE DATE -->
+
+      
+
+      <div class="form-group">
+        <label>Departure Date and Time</label>
+      
+        <!-- <input
+        
+          type="date"
+          placeholder="Departure Date"
+          formControlName="departureDate_andTime"
+          class="busForm.get('departureDate_andTime').invalid && busForm.get('departureDate_andTime').touched"
+          class="form-control"
+          
+          
+        /> -->
+
+       <!-- <div class="datePick">
+        <mat-form-field>
+          <input  formControlName="departureDate_andTime"  matInput [ngxMatDatetimePicker]="picker" placeholder="" [(ngModel)]="this.myDatePicker">
+          <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+          <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>  
+      </mat-form-field> -->
+
+      <div class="myDate" >
+        <app-date-time-picker   class="form-control" style="width: 400px; "   formControlName="departureDate_andTime"      name="startTime"></app-date-time-picker>
+      
+      </div>
+      
+      
+      
+      
+     
+        
+       
+        
+       </div>
+        <!-- <small
+          class="text-danger"
+          *ngIf="
+            busForm.get('departureDate_andTime').invalid &&
+            busForm.get('departureDate_andTime').touched
+          "
+          >invalid or no date provided</small -->
+        
+      <!-- </div> -->
+
+      <!-- Expereiment with DEPARTURE DATE -->
+
+      <div class="form-group">
+        <label>Arrival Date and Time</label>
+        <!-- <input
+          type="date"
+          placeholder="Arrival Date"
+          formControlName="arrivalDate_andTime"
+          class="busForm.get('arrivalDate_andTime').invalid && busForm.get('arrivalDate_andTime').touched"
+          class="form-control"
+        /> -->
+        <!-- <div class="datePick">
+          
+
+          <mat-form-field>
+            <input matInput  formControlName="arrivalDate_andTime"    [ngxMatDatetimePicker]="picker1" placeholder="Choose a date & time" [(ngModel)]="this.tommorowDate  " >
+            <ngx-mat-datetime-picker #picker1></ngx-mat-datetime-picker>
+            <mat-datepicker-toggle matSuffix [for]="$any(picker1)"></mat-datepicker-toggle>  
+        </mat-form-field>
+        <input  formControlName="arrivalDate_andTime" type="datetime-local"  id="birthdaytime" name="birthdaytime">
+        </div> -->
+
+        <div class="myDate" >
+          <app-date-time-picker   class="form-control" style="width: 400px;"  formControlName="arrivalDate_andTime"
+        
+        name="endTime"
+        
+        >
+        
+        </app-date-time-picker>
+        </div>
+  
+        <small
+          class="text-danger"
+          *ngIf="busForm.get('arrivalDate_andTime').errors?.['required'] && busForm.get('arrivalDate_andTime').invalid && busForm.get('arrivalDate_andTime').touched"
+          >mandatory Field</small
+        >
+        <small class="text-danger" *ngIf="busForm.errors?.['arrivalDateError']"
+          >must be greater than or equal departure date</small
+        >
+      </div>
+
+      
+
+      <div class="form-group" style="text-transform: uppercase">
+        <label>Bus Vendor</label>
+        <input
+          type="text"
+          placeholder="bus Vendor"
+          formControlName="busVendor"
+          class="busForm.get('busVendor').invalid && busForm.get('busVendor').touched"
+          class="form-control"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+            busForm.get('busVendor').invalid && busForm.get('busVendor').touched
+          "
+          >Bus vendor is Required</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="name">Price of Ticket</label>
+        <input
+          type="number"
+          placeholder="Price of Ticket"
+          formControlName="price"
+          class="busForm.get('price').invalid && busForm.get('price').touched"
+          class="form-control"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+            busForm.get('departureTime').invalid &&
+            busForm.get('departureTime').touched
+          "
+          >invalid price provided</small
+        >
+      </div>
+
+      <br />
+
+      <input
+        style="margin-left: 30%"
+        type="submit"
+        value="Create This Bus"
+   
+        class="btn btn-warning"
+      />
+
+      <br />
+    </form>
+  </div>
+</div>

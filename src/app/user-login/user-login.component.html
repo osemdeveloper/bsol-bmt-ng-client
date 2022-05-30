@@ -1,0 +1,173 @@
+<div class="image">
+  <div class="logo">
+    <b>Book My Trip</b>
+  </div>
+  <div class="sub">BSOL- Training Project</div>
+
+  <!-- <button type="button" class="btn btn-info" (click)="func()">Info</button> -->
+
+  <div class="Corousol">
+  
+  <ngb-carousel
+          [showNavigationArrows]="true" 
+          [showNavigationIndicators]="true"
+          [interval]="10000"
+          [keyboard]="true"
+          [pauseOnHover]="true"
+          [wrap]="true"
+          [activeId]="'sliderOne'">
+  
+      <ng-template ngbSlide id="sliderOne">
+          <div class="picsum-img-wrapper">
+              <img src="https://images.pexels.com/photos/3358507/pexels-photo-3358507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Carousel One">
+          </div>
+          <!-- <div class="carousel-caption">
+              <h3>Title</h3>
+              <p>Aenean malesuada nisi ut commodo semper.</p>
+          </div> -->
+      </ng-template>
+      <ng-template ngbSlide id="sliderTwo">
+          <div class="picsum-img-wrapper">
+              <img src="https://images.pexels.com/photos/748837/pexels-photo-748837.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Carousel Two">
+          </div>
+          <!-- <div class="carousel-caption">
+              <h3>Title</h3>
+              <p>Aenean malesuada nisi ut commodo semper, Sit amet sagittis dolor.</p>
+          </div> -->
+      </ng-template>
+      <ng-template ngbSlide id="sliderThree">
+          <div class="picsum-img-wrapper">
+              <img src="https://images.pexels.com/photos/869258/pexels-photo-869258.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Carousel Three">
+          </div>
+          <!-- <div class="carousel-caption">
+              <h3>Title</h3>
+              <p>Commodo semper sit amet sagittis dolor.</p>
+          </div> -->
+      </ng-template>
+  
+  </ngb-carousel>
+  </div>
+ 
+
+  <div class="login" align="center" style="padding-top: 8%">
+    <div
+      class="jumbotron"
+      align="center"
+      style="width: 30%; padding-bottom: 1%; padding-top: 4%"
+    >
+      <h1 style="font-size: 40px; color: black; font-weight: 600">  ＬＯＧＩＮ </h1>
+      <br />
+      <div *ngIf="failure.value" class="alert-danger">
+        invalid email or password
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="submit()" class="form-group">
+        <br />
+
+        <!-- userId -->
+
+        <!-- <div
+          *ngIf="
+            loginForm.get('userId').invalid && loginForm.get('userId').touched
+          "
+        >
+          <small
+            *ngIf="loginForm.get('userId').errors?.['required']"
+            class="text-danger"
+            >*Customer ID is madatory</small
+          >
+        </div>
+  
+        <input
+          type="number"
+          class="
+            loginForm.get('userId').invalid && loginForm.get('userId').touched
+          "
+          formControlName="userId"
+          class="form-control"
+          style="text-align: center"
+          placeholder="USER ID"
+        />
+        <br /> -->
+
+        <!-- userEmail-->
+
+        <div
+          *ngIf="
+            loginForm.get('email').invalid && loginForm.get('email').touched
+          "
+        >
+          <small
+            *ngIf="loginForm.get('email').errors?.['required']"
+            class="text-danger"
+            >*Customer Email is madatory</small
+          >
+        </div>
+
+        <input
+          type="text "
+          class="loginForm.get('email').invalid && loginForm.get('email').touched"
+          formControlName="email"
+          class="form-control"
+          style="background-color:  #fff; text-align: center;  border-color: black; "
+          placeholder ="enter your email"
+        />
+        <br />
+
+        <!-- password -->
+        <div
+          *ngIf="
+            loginForm.get('password').invalid &&
+            loginForm.get('password').touched
+          "
+        >
+          <small
+            *ngIf="loginForm.get('password').errors?.['minlength']"
+            class="text-danger"
+            >*password must be minimum 8 characters</small
+          >
+          <small
+            *ngIf="loginForm.get('password').errors?.['required']"
+            class="text-danger"
+            >*password is madatory</small
+          >
+        </div>
+        <input
+          type="password"
+          class="loginForm.get('password').invalid && loginForm.get('password').touched"
+          formControlName="password"
+          class="form-control"
+          style="background-color: #fff; text-align: center; border-color: black; "
+          placeholder="password"
+        />
+        <br />
+
+        <!-- button -->
+        <div class="row">
+          <div class="col-6">
+            <input
+              [disabled]="!loginForm.valid"
+              type="submit"
+              class="btn btn-dark"
+              style="width: 80%"
+              value="Log In"
+            />
+          </div>
+          <div class="col-6">
+            <input
+              type="button"
+              routerLink="/addUser"
+              class="btn btn-info"
+              style="width: 80%"
+              value="Register!"
+            /><br /><br />
+          </div>
+        </div>
+
+        <!-- <a routerLink="/adminLogin">admin login...!!!</a> -->
+      </form>
+    </div>
+  </div>
+</div>
+
+

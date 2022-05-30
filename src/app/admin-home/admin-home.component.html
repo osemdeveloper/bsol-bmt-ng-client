@@ -1,0 +1,104 @@
+<div class="adminHome">
+  <div class="row justify-content-center">
+    <div class="col-sm-10 text-left bg-white rounded shadow py-13">
+      <div class="p-3 bg-danger text-white">
+        <div *ngIf="adminDetails">
+          <h1>Welcome {{ adminDetails.adminName }}</h1>
+        </div>
+
+        <div>
+          <button
+            style="margin-left: 95%; background-color: #fff"
+            class="btn btn float-right"
+            (click)="logout()"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-box-arrow-in-left"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"
+              />
+              <path
+                fill-rule="evenodd"
+                d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
+              />
+            </svg>
+          </button>
+          <h6 style="text-align: right">Logout</h6>
+        </div>
+
+        <div *ngIf="adminDetails">
+          <!-- <h6>Your Admin Id: {{ adminDetails.adminId }}</h6> -->
+          <br />
+          <!-- <small>name: {{adminDetails.adminName}}</small> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">Add Bus Details</h3>
+              <p class="card-text">
+                Here Admin can add the Bus Details into the Database.
+              </p>
+              <button
+                type="submit"
+                class="btn btn-dark float-right"
+                routerLink="/addBusDetails"
+              >
+                Add Bus Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">View All Bus Details</h3>
+              <p class="card-text">
+                Here Admin can view all Bus Details from the Database.
+              </p>
+              <button
+                type="submit"
+                routerLink="/allBusDetails"
+                class="btn btn-dark float-right"
+              >
+                View Bus Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">Add Secondary Admin</h3>
+              <p class="card-text">Here Admin can create secondary admin.</p>
+              <button
+                type="submit"
+                class="btn btn-dark float-right"
+                routerLink="/addAdmin"
+              >
+                Add Admin
+              </button>
+              <button
+              type="submit"
+              class="btn btn-dark float-right"
+              routerLink="/testd"
+            >
+            test
+            </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

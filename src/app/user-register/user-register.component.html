@@ -1,0 +1,218 @@
+<div class="p-3 mb-2 bg-success text-white text-center">
+  <h1 align="center">User Registration</h1>
+</div>
+<br />
+<div class="registerOP">
+         <!-- modal -->
+
+         
+        
+       
+
+        <!-- <button class="btn btn-outline-primary mb-2 me-2" (click)="openBackDropCustomClass(content)">Modal with backdrop custom class</button> -->
+
+
+
+
+
+
+       <!-- modal -->
+  <div class="jumbotron" style="padding-bottom: 5%">
+    <form
+      class="form-group"
+      [formGroup]="userRegisterForm"
+      (ngSubmit)="submit(content); "
+    >
+      <div *ngIf="failure.value" class="alert-danger">
+        This email is already registered! <br />
+        Try with new email id or
+        <button class="button btn btn-warning" routerLink="/userLogin">
+          Login
+        </button>
+      </div>
+
+      <ng-template #content let-modal>
+        <div class="modal-header" >
+          
+          <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body" style="background-image: url(https://images.pexels.com/photos/281260/pexels-photo-281260.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);">
+        <div class="successRegister">
+
+          <h1 class="modal-title" style="font-family:  Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: #fff;">Registration Successfull</h1>
+
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button"  class="btn btn-info" style="position: center;" (click)="modal.close('Close click');navigate()">Login</button>
+        </div>
+      </ng-template>
+
+      <!------------ userName------- -->
+
+      <div class="row">
+        <div class="col-6">
+          <div
+            *ngIf="
+              userRegisterForm.get('userName').invalid &&
+              userRegisterForm.get('userName').touched
+            "
+          >
+            <h5 style="margin-left: 40%" class="text-danger">
+              *Field mandatory
+            </h5>
+          </div>
+          <label style="font-size: x-large; margin-left: 70%">  Name:<span class="asteric">*</span> </label>
+        </div>
+        <div class="col-6">
+          <input type="text" class="form-control" formControlName="userName" />
+        </div>
+      </div>
+      <br />
+
+      <!------------ email--------- -->
+      <!--  class="
+              userRegisterForm.get('userName').invalid &&
+              userRegisterForm.get('userName').touched
+            " -->
+      <div class="row">
+        <div class="col-6">
+          <div
+            *ngIf="
+              userRegisterForm.get('email').invalid &&
+              userRegisterForm.get('email').touched
+            "
+          >
+            <h5 style="margin-left: 40%" class="text-danger">
+              *Field mandatory
+            </h5>
+          </div>
+          <label style="font-size: x-large; margin-left: 70%"> Email:<span class="asteric">*</span> </label>
+        </div>
+        <div class="col-6">
+          <input type="text" class="form-control" formControlName="email" />
+        </div>
+      </div>
+      <br />
+
+      <!-- class="
+              userRegisterForm.get('email').invalid &&
+              userRegisterForm.get('email').touched
+            " -->
+      <!--------- phone number ----------- -->
+
+      <div class="row">
+        <div class="col-6">
+          <div
+            *ngIf="
+              userRegisterForm.get('phone').invalid &&
+              userRegisterForm.get('phone').touched
+            "
+          >
+            <div *ngIf="userRegisterForm.get('phone').errors?.['required']">
+              <h5 style="margin-left: 40%" class="text-danger">
+                *Field mandatory
+              </h5>
+            </div>
+
+            <div *ngIf="userRegisterForm.get('phone').errors?.['pattern']">
+              <h5 style="margin-left: 40%" class="text-danger">
+                *invalid number
+              </h5>
+            </div>
+          </div>
+          <label style="font-size: x-large; margin-left: 70%"
+            >Phone Number:<span class="asteric">*</span>
+          </label>
+        </div>
+        <div class="swap" style="width: 680px">
+          <div class="col-6 input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <span>+91</span>
+              </div>
+            </div>
+            <input type="phone" class="form-control" formControlName="phone" maxlength = "10" />
+          </div>
+        </div>
+      </div>
+      <br />
+      <!--   class="
+                userRegisterForm.get('phone').invalid &&
+                userRegisterForm.get('phone').touched
+              " -->
+      <!----------- password -------------->
+
+      <div class="row">
+        <div class="col-6">
+          <div
+            *ngIf="
+              userRegisterForm.get('password').invalid &&
+              userRegisterForm.get('password').touched
+            "
+          >
+            <div *ngIf="userRegisterForm.get('password').errors?.['required']">
+              <h5 style="margin-left: 40%" class="text-danger">
+                *Field mandatory
+              </h5>
+            </div>
+            <!-- <div *ngIf="userRegisterForm.get('password').errors?.['minlength']">
+              <h5 style="margin-left: 40%" class="text-danger">
+                *password must be minimum 8 characters combination of numbers, letters, and
+                special characters
+              </h5>
+            </div> -->
+          </div>
+          <label style="font-size: x-large; margin-left: 70%">Password:<span class="asteric">*</span></label>
+        </div>
+        <div class="col-6">
+          <input ng-model="DiskPermissions" class="col-md-3 m-x-auto" matTooltip='password must be minimum 8 characters combination of numbers, UPPERCASE & lowercase letters, and
+          special characters'
+            type="password"
+            class="form-control"
+            formControlName="password"
+          />
+        </div>
+      </div>
+      <br />
+      <!--  class="
+              userRegisterForm.get('password').invalid &&
+              userRegisterForm.get('password').touched
+            " -->
+      <!----------------- confirm password------------ -->
+      <div class="row">
+        <div class="col-6">
+          <!-- <div *ngIf="userRegisterForm.errors?.['mismatch']">
+            <h6 style="margin-left: 40%" class="text-danger">
+              *Password mismatch
+            </h6>
+          </div> -->
+          <label style="font-size: x-large; margin-left: 70%"
+            >Confirm password:<span class="asteric">*</span></label
+          >
+        </div>
+        <div class="col-6">
+          <input
+            type="password"
+            class="form-control"
+            formControlName="confirmPassword"
+          />
+        </div>
+      </div>
+      <br />
+      <!-- class="userRegisterForm.errors?.['mismatch']" -->
+      <div align="center">
+        <input
+          type="submit"
+          class="btn btn-primary"
+          value="Register"
+        />
+      </div>
+      <br />
+    </form>
+    <br />
+    <!-- <div align="center">
+            <a routerLink="/userLogin"> User Login</a>
+        </div> -->
+  </div>
+</div>

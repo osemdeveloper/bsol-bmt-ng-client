@@ -1,0 +1,181 @@
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="p-3 mb-2 bg-danger text-white text-center">
+        <h2>🚌 &nbsp; List of Bus</h2>
+      </div>
+    </div>
+    <br />
+    <button
+      style="margin-left: 90%; margin-bottom: 1%"
+      class="btn btn-dark"
+      routerLink="/adminHome"
+    >
+      Goto Home
+    </button>
+
+
+    <div class="panel-body" >
+      <table 
+        class="table table-bordered table-hover"  
+        style="background-color: #fff"
+        *ngIf="buses"
+      >
+        <thead style="width: fit-content;">
+          <tr>
+            <th>Bus Number</th>
+            <th>Registration Number</th>
+            <th>Departure Depot</th>
+            <th>Arrival Depot</th>
+            <th>Available Seats</th>
+            <th style="width: 400px;">Departure Date and Time</th>
+            <th style="width: 400px;">Arrival Date and Time</th>
+            <!-- <th>Arrival Time</th> -->
+            <!-- <th>Departure Time</th> -->
+            <th>Bus Vendor</th>
+            <th>Ticket Price</th>
+            <th>ACTIONS</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let bus of buses">
+            <td 
+              [ngClass]="{
+                'text-info': bus.avaliableSeats <56
+              }"
+            >
+              {{ bus.busNumber }}
+            </td>
+            <td
+              style="text-transform: uppercase"
+              [ngClass]="{
+                'text-info':  bus.avaliableSeats <56
+              }"
+            >
+              {{ bus.registrationNumber }}
+            </td>
+
+            <td
+              [ngClass]="{
+                'text-info': bus.avaliableSeats <56
+              }"
+            >
+              {{ bus.sourceDepot }}
+            </td>
+            <td
+              [ngClass]="{
+                'text-info':  bus.avaliableSeats <56
+              }"
+            >
+              {{ bus.destinationDepot }}
+            </td>
+            <td
+              [ngClass]="{
+                'text-info': bus.avaliableSeats <56
+              }"
+            >
+              {{ bus.avaliableSeats }}
+            </td>
+            <td   *ngFor="let format of formatsDateTest"
+              [ngClass]="{
+                'text-info':  bus.avaliableSeats <56
+              }"
+            >
+            <i  class="fa fa-calendar" aria-hidden="true"></i>    {{ bus.departureDate_andTime  | date: format}}
+            </td>
+            <td *ngFor="let format of formatsDateTest"
+              [ngClass]="{
+                'text-info': bus.avaliableSeats <56
+              }"
+            >
+            <i class="fa fa-calendar" aria-hidden="true"></i>    {{ bus.arrivalDate_andTime  | date: format }}
+            </td>
+            <!-- <td
+              [ngClass]="{
+                'text-secondary': bus.departureDate_andTime < this.todayDate || bus.avaliableSeats <56
+              }"
+            >
+              {{ bus.arrivalTime }}
+            </td> -->
+            <!-- <td
+              [ngClass]="{
+                'text-secondary': bus.departureDate_andTime < this.todayDate || bus.avaliableSeats <56
+              }"
+            >
+              {{ bus.departureTime }}
+            </td> -->
+            <td
+              [ngClass]="{
+                'text-info': bus.avaliableSeats <56
+              }"
+            >
+              {{ bus.busVendor }}
+            </td>
+            <td
+              [ngClass]="{
+                'text-info': bus.avaliableSeats <56
+              }"
+            >
+              {{ bus.price | currency: "INR"  }} 
+            </td>
+            <td>
+              <button 
+             
+                class="btn btn-danger"
+                [disabled]="bus.isArrivalDateExpird"
+                (click)="   openBackDropCustomClass(content)" 
+                [ngClass]="{
+                  'disabled': bus.avaliableSeats <56
+                }"
+             
+              >
+                Delete
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-dark" (click)="updateBus(bus.busNumber)" 
+              [disabled]="bus.isArrivalDateExpird"
+              [ngClass]="{
+                'disabled': bus.avaliableSeats <56
+              }"
+              >
+                Update
+              </button>
+
+            </td>
+
+            
+              <ng-template #content let-modal >
+                <div class="modal-header" >
+                  
+                  <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                </div>
+                <div class="modal-body" style="background-image: url();">
+                <div class="successRegister">
+        
+                  <h2 class="modal-title" style="border-radius: 15px;
+                  margin-top: 5%;
+                  background-image: url();
+                  background-color: rgba(255, 255, 255, 0.25);
+                  backdrop-filter: blur(1px);
+                  /* background-color: black; */
+                  width: 300px;
+                  height: 100px;">Are you sure to remove?</h2>
+        
+                </div>
+                </div>
+                <div class="modal-footer " >
+                  <button  type="button"  class="btn btn-danger" style="position: center;" (click)="removeBus(bus); modal.close('Close click'); navigate()">Delete</button>
+                </div>
+              </ng-template>
+          
+      
+          </tr>
+        </tbody>
+      </table>
+
+     
+    </div>
+  </div>
+</div>

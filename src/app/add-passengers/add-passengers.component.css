@@ -1,0 +1,15 @@
+.addBox {
+  width: 300px;
+  height: 300px;
+  margin-left: 70%;
+  border-radius: 10px;
+  /* background-color: teal; */
+  background-image: url(https://images.pexels.com/photos/4710556/pexels-photo-4710556.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+}
+
+.passengerImage {
+  height: 1025px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(https://images.pexels.com/photos/610293/pexels-photo-610293.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+}

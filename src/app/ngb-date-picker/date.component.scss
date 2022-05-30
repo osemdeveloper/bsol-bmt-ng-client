@@ -1,0 +1,27 @@
+.custom-day {
+  text-align: center; 
+  padding: 0.185rem 0.25rem;
+  border-radius: 0.25rem;
+  display: inline-block;
+  width: 2rem;
+  font-weight: 500;
+}
+
+.custom-day:hover, .custom-day.focused {
+  background-color: #e6e6e6;
+}
+.weekend {
+  border-radius: 1rem;
+  color: #6EB5EA;
+} 
+.hidden {
+  color:lightgray;
+}
+.today {
+  border-style: solid;
+  background-color: white;
+  border-width: thin;
+  border-color: #416D98;
+  border-radius: 1rem;
+  font-weight : bold;
+}

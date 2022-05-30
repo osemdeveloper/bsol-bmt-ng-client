@@ -1,0 +1,24 @@
+.registerOP{
+    
+    height: 700px;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    background-image: url(https://images.pexels.com/photos/950241/pexels-photo-950241.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 );
+}
+
+.asteric{
+    color: red;
+}
+
+.successRegister{
+    width: 300px;
+    height: 200px;
+
+   
+    /* background-image: url(https://images.pexels.com/photos/730564/pexels-photo-730564.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1); */
+}
+
+
+
+ 

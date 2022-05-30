@@ -1,0 +1,337 @@
+<mat-sidenav-container>
+  <mat-sidenav-content>
+    <mat-toolbar style="background-color: darkcyan">
+      <div fxHide.gt-xs>
+        <button mat-icon-button>
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+
+      <div fxFlex fxLayout fxLayoutAlign="flex" fxHide.xs>
+        <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+          <li>
+            <a>
+              <mat-icon style="color: #fff" class="icon"
+                >account_circle</mat-icon
+              >
+              <!-- <i class="fa fa-user-circle"></i> -->
+
+              &nbsp;
+              <span style="color: #fff" class="label" routerLink="/viewUser"
+                >Profile</span
+              >
+            </a>
+          </li>
+          <li>
+            <a>
+              <mat-icon style="color: #fff" class="icon">settings</mat-icon>
+              <!-- <i class="fa fa-gear"></i> -->
+              &nbsp;
+              <span style="color: #fff" class="label" routerLink="/updateUser"
+                >Settings</span
+              >
+            </a>
+          </li>
+          <li>
+            <a>
+              <mat-icon style="color: #fff" class="icon">book_online</mat-icon>
+              <!-- <i class="fa fa-ticket"></i> -->
+
+              &nbsp;
+              <span style="color: #fff" class="label" (click)="getBookings()"
+                >Bookings</span
+              >
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+          <a>
+            <!-- <i class="fa fa-sign-out"></i> -->
+
+            &nbsp;
+            <span style="color: #fff" class="label" (click)="logout()"
+              ><mat-icon style="color: #fff" class="icon"
+                >power_settings_new</mat-icon
+              ></span
+            >
+          </a>
+        </ul>
+      </div>
+    </mat-toolbar>
+    <main></main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<div *ngIf="user">
+  <div>
+    <!-- <h5 style="margin-left:45%" >  Hi, {{ user.userName }} </h5> -->
+    <!-- <marquee> Lets Move this text.</marquee> -->
+    <!-- <marquee behavior="scroll" direction="left" scrollamount="10">
+      <b style="color: teal">BOOK TICKETS NOW online at www.bookmytrip.org </b>
+      &nbsp;<b>
+        We are 100% open now . We are happy to serve you with all the covid
+        guidelines and safety measurements. Happy To Serve :)</b
+      >
+      &nbsp; <b style="color: green">Enjoy Travelling with Upto 40% Off</b>
+    </marquee> -->
+  </div>
+</div>
+
+<div class="container2">
+  <div class="mb-2" align="center">
+    <div class="row"></div>
+  </div>
+  <div class="fromTo" style="margin-left: 10%">
+    <div class="jumbotron mt-1">
+      &nbsp;
+      <form [formGroup]="searchForm" (ngSubmit)="search()">
+        <div class="searchBox">
+          <div class="form-row">
+            <div class="form-group col-md-5">
+              <label
+                style="
+                  font-size: x-large;
+                  color: #fffdfa;
+                  margin-left: 35%;
+                  font-weight: bolder;
+                "
+                for="dep"
+                >From</label
+              >
+              <!-- <input
+              type="text"
+              class="searchForm.get('sourceDepot').invalid && searchForm.get('sourceDepot').touched"
+              placeHolder="Boarding Point"
+              id="dep"
+              class="form-control"
+              formControlName="sourceDepot"
+            /> -->
+
+            
+
+              <select
+                style="
+                  width: 150px;
+                  border-radius: 5px;
+                  height: 35px;
+                  margin-right: 12%;
+                "
+                class="searchForm.get('sourceDepot').invalid && searchForm.get('sourceDepot').touched"
+                (change)="changeSourceDepot($event)"
+                formControlName="sourceDepot"
+                autocomplete="off"
+              >
+                <option style="color: #fff;  background-color: teal;" value="Choose City" selected>
+                  Choose City
+                </option>
+
+                <option *ngFor="let city of boardingPointList" [ngValue]="city">
+                  {{ city }}
+                </option>
+              </select>
+
+              <!-- <small
+                class="text-danger"
+                *ngIf="
+                  searchForm.get('sourceDepot').invalid &&
+                  searchForm.get('sourceDepot').touched
+                "
+                >*mandatory field</small
+              > -->
+            </div>
+
+            &nbsp;
+
+            <div class="form-group col-md-5">
+              <label
+                style="
+                  font-size: x-large;
+                  color: #fffdfa;
+                  margin-left: 50%;
+                  font-weight: bolder;
+                "
+                for="ari"
+                >To</label
+              ><br />
+
+              <!-- <input
+              type="text"
+              class="searchForm.get('destinationDepot').invalid && searchForm.get('destinationDepot').touched"
+              placeHolder="Arrival Point"
+              id="ari"
+              class="form-control"
+              formControlName="destinationDepot"
+              autocomplete="off" 
+            /> -->
+
+              <select
+                style="width: 150px; border-radius: 5px; height: 35px"
+                class="searchForm.get('destinationDepot').invalid && searchForm.get('destinationDepot').touched"
+                (change)="changeDestinationDepot($event)"
+                formControlName="destinationDepot"
+                autocomplete="off"
+              >
+                <!-- <option value="Choose City" selected>Choose City</option> -->
+                <option  style="color: #fff; background-color: teal;" value="Choose City" selected>
+                  Choose City
+                </option>
+                <option  *ngFor="let city of dropingPointList" [ngValue]="city" >
+                  {{ city }}
+                </option>
+              </select>
+              <!-- <small
+                class="text-danger"
+                *ngIf="
+                  searchForm.get('destinationDepot').invalid &&
+                  searchForm.get('destinationDepot').touched
+                "
+                >*mandatory field</small
+              > -->
+            </div>
+
+            <BR />
+
+            <div class="form-group col-md-10">
+              <label
+                style="
+                  font-size: x-large;
+                  color: #fffdfa;
+                  margin-left: 20%;
+                  font-weight: bolder;
+                "
+                for="date"
+              >
+                Date</label
+              >
+
+              <!-- <input
+          type="date"
+          
+          formControlName="date"
+          class=""
+          class="form-control" 
+        /> -->
+              <ngbd-datepicker-customday
+                formControlName="date"
+                name="date"
+                [disabled]="true"
+              >
+              </ngbd-datepicker-customday>
+            </div>
+          </div>
+        </div>
+        <br />
+
+        &nbsp;
+        <div class="form-row">
+          <input
+            style="margin-left: 15%; width: 200px; margin-left: 20%"
+            type="submit"
+            class="btn btn-light"
+            value="Book"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <h2>{{ notFound }}</h2>
+
+  <div class="extraJumbo">
+    <div class="jumbotron" align="center" *ngIf="found">
+      <table
+        style="
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        "
+      >
+        <tr style="background-color: #dddddd">
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px">
+            Bus Number
+          </th>
+          <th>Boarding Point</th>
+          <th>Dropping Point</th>
+          <th>Cost</th>
+          <th>seats</th>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #dddddd; text-align: left; padding: 8px">
+            {{ buses.registrationNumber }}
+          </td>
+          <td>{{ buses.sourceDepot }}</td>
+          <td>{{ buses.destinationDepot }}</td>
+          <td>{{ buses.price | currency: "INR" }}</td>
+          <td>{{buses.avaliableSeats}}</td>
+        </tr>
+      </table>
+
+      <table
+        style="
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        "
+      >
+        <tr style="background-color: #dddddd">
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px">
+            Departure Date and Time
+          </th>
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px">
+            Arrival Date and Time
+          </th>
+        </tr>
+        <tr *ngFor="let format of formatsDateTest">
+          <td style="border: 1px solid #dddddd; text-align: left; padding: 8px">
+            {{ buses.departureDate_andTime | date: format   }}
+          </td>
+
+          <td style="border: 1px solid #dddddd; text-align: left; padding: 8px">
+            {{ buses.arrivalDate_andTime | date: format   }}
+          </td>
+        </tr>
+      </table>
+
+      <table
+        style="
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        "
+      >
+        <!-- <tr style="background-color: #dddddd">
+          <th style="border: 1px solid #dddddd; text-align: left; padding: 8px">
+            Arrival Date and Time
+          </th>
+        
+        </tr>
+        <tr>
+          <td style="border: 1px solid #dddddd; text-align: left; padding: 8px">
+            {{ buses.arrivalDate_andTime }}
+            &nbsp;
+            {{ buses.arrivalTime }}
+          </td>
+          
+        </tr> -->
+      </table>
+
+      <button class="btn btn-dark" (click)="addPassengers()">
+        add passengers
+      </button>
+    </div>
+  </div>
+
+  <div class="chatBot">
+    <df-messenger
+      intent="WELCOME"
+      chat-title="shrinivas"
+      agent-id="ad445aea-58d7-4d63-b95b-9e31ab639ac8"
+      language-code="en"
+    ></df-messenger>
+  </div>
+</div>
+
+<!-- L251    [disabled]="!searchForm.valid" -->

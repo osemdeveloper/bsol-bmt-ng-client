@@ -1,0 +1,85 @@
+.payments{
+/* background-image: url(https://images.pexels.com/photos/34577/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1); */
+    height: 600px;
+    text-align: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  
+}
+
+.one{
+  
+    margin-left: 1%;
+}
+
+.two{
+    margin-left: 1%;
+}
+
+body {
+    background: #f5f5f5!important;
+  }
+  
+  .rounded-lg {
+    border-radius: 1rem;
+  }
+  
+  .nav-pills .nav-link {
+    color: #555;
+  }
+  
+  .nav-pills .nav-link.active {
+    color: #fff;
+  }
+  
+  .icoN{
+    width: 40px;
+    height: 35px;
+  }
+
+  .QRLogo{
+    height: 30px;
+    width: 60px;
+    background-image: url(https://st.depositphotos.com/26922084/51435/v/950/depositphotos_514354144-stock-illustration-girl-scans-qr-code-in.jpg?forcejpeg=true);
+  }
+
+  mat-progress-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+ 
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinner .8s linear infinite;
+}
+
+.payGlass{
+  
+ 
+  background-image: url(https://images.pexels.com/photos/989941/pexels-photo-989941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  /* background-color: rgba(255, 255, 255, 0.25); */
+  backdrop-filter: blur(1px);
+  /* background-color: black; */
+ 
+
+}

@@ -1,1 +1,81 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* @import '~bootstrap/dist/css/bootstrap.min.css';
+
+@import '~open-iconic/font/css/open-iconic-bootstrap.css'; */
+
+body {
+    margin: 0;
+  }
+
+
+app-date-time-picker .form-control {
+height: 25px !important;
+}
+button.btn.btn-outline-secondary {
+height: 25px;
+}
+app-date-time-picker .input-group-append button.btn-outline-secondary {
+border-radius: 0;
+padding: 6px;
+border: 1px solid #bbb;
+background: linear-gradient(
+to right,
+rgba(214, 219, 191, 0.5) 0%,
+rgba(244, 245, 224, 0.71) 100%
+);
+}
+app-date-time-picker .input-group-append button.btn-outline-secondary:hover {
+background: linear-gradient(
+to right,
+rgba(214, 219, 191, 0.5) 0%,
+rgba(244, 245, 224, 0.71) 100%
+);
+}
+app-date-time-picker .input-group-append .ng-fa-icon:hover,
+button.btn.btn-block.btn-outline-secondary:hover {
+color: #5f5e5e;
+}app-date-time-picker .input-group-append button.btn-outline-secondary:active {
+border: 0;
+}
+
+
+app-date-time-picker
+.input-group-append
+button.btn-outline-secondary:first-child
+fa-icon
+.fa-calendar {
+position: relative;
+top: -7px;
+font-size: small;
+color: #5f5e5e;
+}
+app-date-time-picker
+.input-group-append
+.popover-body
+button.btn-outline-secondary:first-child
+fa-icon
+.fa-calendar {
+position: relative;
+top: 0;
+font-size: medium;
+color: #5f5e5e;
+}
+app-date-time-picker
+.input-group-append
+.popover-body
+button.btn-outline-secondary:active
+fa-icon
+.fa-calendar {
+color: #fff;
+}
+app-date-time-picker
+.input-group-append
+button.btn-outline-secondary:hover
+fa-icon
+.fa-calendar {
+color: #5f5e5e;
+}
+
+
